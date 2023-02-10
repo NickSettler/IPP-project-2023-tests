@@ -82,7 +82,7 @@ def main():
     succeed = 0
     failed = 0
 
-    xml_parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
+    xml_parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8', remove_blank_text=True)
 
     for test in tests:
         tests_runner.run(test)
@@ -123,12 +123,4 @@ def main():
 
 
 if __name__ == '__main__':
-    print("""<?xml version="1.0" encoding="UTF-8"?>
-<program language="IPPcode23">
- <instruction order="1" opcode="MOVE">
-  <arg1 type="var">GF@a</arg1>
-  <arg2 type="int">-1</arg2>
- </instruction>
-</program>""".replace(" ", ""))
-
     main()
