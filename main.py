@@ -2,6 +2,8 @@ import os
 import argparse
 import subprocess
 from termcolor import colored
+from lxml import etree
+from xmldiff import main as xmldiff
 
 
 def help():
@@ -80,6 +82,8 @@ def main():
     succeed = 0
     failed = 0
 
+    xml_parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
+
     for test in tests:
         tests_runner.run(test)
 
@@ -88,7 +92,17 @@ def main():
             print(colored(f"Test {test.name} failed: RC {test.actual_rc} != {test.expected_rc}", "red"))
             continue
 
-        if test.actual_out.strip() != test.expected_out.strip():
+        if test.actual_out.strip() and test.expected_out.strip():
+            left_tree = etree.XML(bytes(bytearray(test.actual_out, encoding='utf-8')), parser=xml_parser)
+            right_tree = etree.XML(bytes(bytearray(test.expected_out, encoding='utf-8')), parser=xml_parser)
+            output_diff = xmldiff.diff_trees(left_tree, right_tree)
+
+            if len(output_diff):
+                failed += 1
+                print(colored(f"Test {test.name} failed: OUT {test.actual_out} != {test.expected_out}", "red"))
+                continue
+
+        elif test.actual_out.strip() != test.expected_out.strip():
             failed += 1
             print(colored(f"Test {test.name} failed: OUT {test.actual_out} != {test.expected_out}", "red"))
             continue
