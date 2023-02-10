@@ -1,0 +1,2 @@
+.IPPcode23
+JUMPIFEQ int@12 int@0 int@1

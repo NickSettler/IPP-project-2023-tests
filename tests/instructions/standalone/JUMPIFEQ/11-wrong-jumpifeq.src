@@ -1,0 +1,2 @@
+.IPPcode23
+JUMPIFEQ func_label SR@abc int@0

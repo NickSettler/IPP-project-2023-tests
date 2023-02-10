@@ -1,0 +1,2 @@
+.IPPcode23
+JUMPIFNEQ func_label GF@sum GF@sum
