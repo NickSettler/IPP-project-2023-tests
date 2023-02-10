@@ -97,7 +97,7 @@ def main():
 
         if int(test.actual_rc) != int(test.expected_rc):
             failed += 1
-            print(colored(f"Test {test.name} failed: RC {test.actual_rc} != {test.expected_rc}", "red"))
+            print(colored(f"❌ Test {test.name} failed: RC {test.actual_rc} != {test.expected_rc}", "red"))
             continue
 
         if test.actual_out.strip() and test.expected_out.strip():
@@ -107,23 +107,36 @@ def main():
 
             if len(output_diff):
                 failed += 1
-                print(colored(f"Test {test.name} failed: OUT {test.actual_out} != {test.expected_out}", "red"))
+                print(colored(f"❌ Test {test.name} failed: OUT {test.actual_out} != {test.expected_out}", "red"))
                 continue
 
         elif test.actual_out.strip() != test.expected_out.strip():
             failed += 1
-            print(colored(f"Test {test.name} failed: OUT {test.actual_out} != {test.expected_out}", "red"))
+            print(colored(f"❌ Test {test.name} failed: OUT {test.actual_out} != {test.expected_out}", "red"))
             continue
 
         succeed += 1
-        print(colored(f"Test {test.name} passed", "green"))
+        print(colored(f"✅ Test {test.name} passed", "green"))
 
     percent = succeed / (succeed + failed) * 100
     print(colored(f"Passed: {succeed}\t\tFailed: {failed}\t\tPercent: {percent:.2f}%",
                   "green" if failed == 0 else percent > 50 and "yellow" or "red"))
 
     stats_length = 54
+
+    red_zone = 5
+    orange_zone = 8
+    yellow_zone = 10
+    green_zone = 4
+
+    pattern = "🟥" * int(red_zone) + "🟧" * int(orange_zone) + "🟨" * int(yellow_zone) + "🟩" * int(green_zone)
     stats = int(percent / 100 * stats_length)
+    success_quotient = int(succeed / (succeed + failed) * stats_length) // 2
+    visible_pattern = pattern[:success_quotient]
+
+    print(colored(f"[{visible_pattern}{' ' * (stats_length - len(visible_pattern) * 2)}] {percent:.2f}%",
+                  "green" if failed == 0 else percent > 50 and "yellow" or "red"))
+
     print(colored(f"[{'=' * stats}{' ' * (stats_length - stats)}] {percent:.2f}%",
                   "green" if failed == 0 else percent > 50 and "yellow" or "red"))
 
