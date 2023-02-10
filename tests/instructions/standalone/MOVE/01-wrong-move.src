@@ -1,0 +1,2 @@
+.IPPcode23
+MOVE string@hello GF@%retval
