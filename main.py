@@ -17,9 +17,13 @@ def help():
     parser.add_argument("--help", "-h", action="help", help=argparse.SUPPRESS)
     parser.add_argument("-i", "--interpret", action="store", help="PHP 8.1 interpreter", required=True)
     parser.add_argument("-s", "--source", action="store", help="Path to parse.php file", required=True)
+    parser.add_argument("-f", "--filter",
+                        action="store",
+                        help="""Filter tests by category. Categories are divided by comma. Categories can be anything 
+                        what will be in the test path.""")
 
     args = parser.parse_args()
-    return [args.interpret, args.source]
+    return [args.interpret, args.source, args.filter]
 
 
 class Test:
@@ -72,10 +76,14 @@ def get_tests():
 
 
 def main():
-    interpret, source = help()
+    interpret, source, filters = help()
 
     tests = get_tests()
     tests.sort(key=lambda x: x.src_file)
+
+    if filters:
+        filters = filters.split(',')
+        tests = [test for test in tests if all(f in test.src_file for f in filters)]
 
     tests_runner = TestRunner(interpret, source)
 
