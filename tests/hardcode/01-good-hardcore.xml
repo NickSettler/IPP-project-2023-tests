@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode23">
+  <instruction order="1" opcode="DEFVAR">
+    <arg1 type="var">GF@a</arg1>
+  </instruction>
+  <instruction order="2" opcode="READ">
+    <arg1 type="var">GF@a</arg1>
+    <arg2 type="type">int</arg2>
+  </instruction>
+  <instruction order="3" opcode="DEFVAR">
+    <arg1 type="var">GF@b</arg1>
+  </instruction>
+  <instruction order="4" opcode="READ">
+    <arg1 type="var">GF@b</arg1>
+    <arg2 type="type">int</arg2>
+  </instruction>
+  <instruction order="5" opcode="DEFVAR">
+    <arg1 type="var">GF@c</arg1>
+  </instruction>
+  <instruction order="6" opcode="ADD">
+    <arg1 type="var">GF@c</arg1>
+    <arg2 type="var">GF@a</arg2>
+    <arg3 type="var">GF@b</arg3>
+  </instruction>
+  <instruction order="7" opcode="DEFVAR">
+    <arg1 type="var">GF@__LOOP_1_cond</arg1>
+  </instruction>
+  <instruction order="8" opcode="GT">
+    <arg1 type="var">GF@__LOOP_1_cond</arg1>
+    <arg2 type="var">GF@c</arg2>
+    <arg3 type="int">0</arg3>
+  </instruction>
+  <instruction order="9" opcode="LABEL">
+    <arg1 type="label">__LOOP_1_start</arg1>
+  </instruction>
+  <instruction order="10" opcode="JUMPIFEQ">
+    <arg1 type="label">__LOOP_1_end</arg1>
+    <arg2 type="var">GF@__LOOP_1_cond</arg2>
+    <arg3 type="bool">false</arg3>
+  </instruction>
+  <instruction order="11" opcode="DEFVAR">
+    <arg1 type="var">GF@__COND_1_cond</arg1>
+  </instruction>
+  <instruction order="12" opcode="GT">
+    <arg1 type="var">GF@__COND_1_cond</arg1>
+    <arg2 type="var">GF@c</arg2>
+    <arg3 type="int">5</arg3>
+  </instruction>
+  <instruction order="13" opcode="JUMPIFEQ">
+    <arg1 type="label">__COND_1_body</arg1>
+    <arg2 type="var">GF@__COND_1_cond</arg2>
+    <arg3 type="bool">true</arg3>
+  </instruction>
+  <instruction order="14" opcode="JUMPIFEQ">
+    <arg1 type="label">__COND_1_else</arg1>
+    <arg2 type="var">GF@__COND_1_cond</arg2>
+    <arg3 type="bool">false</arg3>
+  </instruction>
+  <instruction order="15" opcode="LABEL">
+    <arg1 type="label">__COND_1_body</arg1>
+  </instruction>
+  <instruction order="16" opcode="ADD">
+    <arg1 type="var">GF@c</arg1>
+    <arg2 type="var">GF@c</arg2>
+    <arg3 type="int">1</arg3>
+  </instruction>
+  <instruction order="17" opcode="JUMP">
+    <arg1 type="label">__COND_1_end</arg1>
+  </instruction>
+  <instruction order="18" opcode="LABEL">
+    <arg1 type="label">__COND_1_else</arg1>
+  </instruction>
+  <instruction order="19" opcode="SUB">
+    <arg1 type="var">GF@c</arg1>
+    <arg2 type="var">GF@c</arg2>
+    <arg3 type="int">1</arg3>
+  </instruction>
+  <instruction order="20" opcode="JUMP">
+    <arg1 type="label">__COND_1_end</arg1>
+  </instruction>
+  <instruction order="21" opcode="LABEL">
+    <arg1 type="label">__COND_1_end</arg1>
+  </instruction>
+  <instruction order="22" opcode="GT">
+    <arg1 type="var">GF@__LOOP_1_cond</arg1>
+    <arg2 type="var">GF@c</arg2>
+    <arg3 type="int">0</arg3>
+  </instruction>
+  <instruction order="23" opcode="JUMP">
+    <arg1 type="label">__LOOP_1_start</arg1>
+  </instruction>
+  <instruction order="24" opcode="LABEL">
+    <arg1 type="label">__LOOP_1_end</arg1>
+  </instruction>
+  <instruction order="25" opcode="WRITE">
+    <arg1 type="var">GF@c</arg1>
+  </instruction>
+  <instruction order="26" opcode="DEFVAR">
+    <arg1 type="var">GF@__COND_2_cond</arg1>
+  </instruction>
+  <instruction order="27" opcode="JUMPIFEQ">
+    <arg1 type="label">__COND_2_end</arg1>
+    <arg2 type="var">GF@__COND_2_cond</arg2>
+    <arg3 type="bool">false</arg3>
+  </instruction>
+  <instruction order="28" opcode="LABEL">
+    <arg1 type="label">__COND_2_body</arg1>
+  </instruction>
+  <instruction order="29" opcode="DEFVAR">
+    <arg1 type="var">GF@d</arg1>
+  </instruction>
+  <instruction order="30" opcode="READ">
+    <arg1 type="var">GF@d</arg1>
+    <arg2 type="type">string</arg2>
+  </instruction>
+  <instruction order="31" opcode="DEFVAR">
+    <arg1 type="var">GF@e</arg1>
+  </instruction>
+  <instruction order="32" opcode="READ">
+    <arg1 type="var">GF@e</arg1>
+    <arg2 type="type">int</arg2>
+  </instruction>
+  <instruction order="33" opcode="DEFVAR">
+    <arg1 type="var">GF@d_l</arg1>
+  </instruction>
+  <instruction order="34" opcode="STRLEN">
+    <arg1 type="var">GF@d_l</arg1>
+    <arg2 type="var">GF@d</arg2>
+  </instruction>
+  <instruction order="35" opcode="DEFVAR">
+    <arg1 type="var">GF@f</arg1>
+  </instruction>
+  <instruction order="36" opcode="ADD">
+    <arg1 type="var">GF@f</arg1>
+    <arg2 type="var">GF@d_l</arg2>
+    <arg3 type="var">GF@e</arg3>
+  </instruction>
+  <instruction order="37" opcode="WRITE">
+    <arg1 type="var">GF@f</arg1>
+  </instruction>
+  <instruction order="38" opcode="DEFVAR">
+    <arg1 type="var">GF@__COND_3_cond</arg1>
+  </instruction>
+  <instruction order="39" opcode="JUMPIFEQ">
+    <arg1 type="label">__COND_3_end</arg1>
+    <arg2 type="var">GF@__COND_3_cond</arg2>
+    <arg3 type="bool">false</arg3>
+  </instruction>
+  <instruction order="40" opcode="LABEL">
+    <arg1 type="label">__COND_3_body</arg1>
+  </instruction>
+  <instruction order="41" opcode="DEFVAR">
+    <arg1 type="var">GF@g</arg1>
+  </instruction>
+  <instruction order="42" opcode="PUSHS">
+    <arg1 type="var">GF@d</arg1>
+  </instruction>
+  <instruction order="43" opcode="CALL">
+    <arg1 type="label">ord</arg1>
+  </instruction>
+  <instruction order="44" opcode="POPS">
+    <arg1 type="var">GF@g</arg1>
+  </instruction>
+  <instruction order="45" opcode="WRITE">
+    <arg1 type="var">GF@g</arg1>
+  </instruction>
+  <instruction order="46" opcode="JUMP">
+    <arg1 type="label">__COND_3_end</arg1>
+  </instruction>
+  <instruction order="47" opcode="LABEL">
+    <arg1 type="label">__COND_3_end</arg1>
+  </instruction>
+  <instruction order="48" opcode="JUMP">
+    <arg1 type="label">__COND_2_end</arg1>
+  </instruction>
+  <instruction order="49" opcode="LABEL">
+    <arg1 type="label">__COND_2_end</arg1>
+  </instruction>
+  <instruction order="50" opcode="EXIT">
+    <arg1 type="int">0</arg1>
+  </instruction>
+  <instruction order="51" opcode="LABEL">
+    <arg1 type="label">ord</arg1>
+  </instruction>
+  <instruction order="52" opcode="CREATEFRAME"/>
+  <instruction order="53" opcode="PUSHFRAME"/>
+  <instruction order="54" opcode="DEFVAR">
+    <arg1 type="var">LF@string</arg1>
+  </instruction>
+  <instruction order="55" opcode="DEFVAR">
+    <arg1 type="var">LF@string_length</arg1>
+  </instruction>
+  <instruction order="56" opcode="DEFVAR">
+    <arg1 type="var">LF@result</arg1>
+  </instruction>
+  <instruction order="57" opcode="POPS">
+    <arg1 type="var">LF@string</arg1>
+  </instruction>
+  <instruction order="58" opcode="STRLEN">
+    <arg1 type="var">LF@string_length</arg1>
+    <arg2 type="var">LF@string</arg2>
+  </instruction>
+  <instruction order="59" opcode="MOVE">
+    <arg1 type="var">LF@result</arg1>
+    <arg2 type="int">0</arg2>
+  </instruction>
+  <instruction order="60" opcode="PUSHS">
+    <arg1 type="var">LF@string_length</arg1>
+  </instruction>
+  <instruction order="61" opcode="PUSHS">
+    <arg1 type="int">0</arg1>
+  </instruction>
+  <instruction order="62" opcode="STRI2INT">
+    <arg1 type="var">LF@result</arg1>
+    <arg2 type="var">LF@string</arg2>
+    <arg3 type="int">0</arg3>
+  </instruction>
+  <instruction order="63" opcode="LABEL">
+    <arg1 type="label">ord_if_end</arg1>
+  </instruction>
+  <instruction order="64" opcode="PUSHS">
+    <arg1 type="var">LF@result</arg1>
+  </instruction>
+  <instruction order="65" opcode="POPFRAME"/>
+  <instruction order="66" opcode="RETURN"/>
+</program>

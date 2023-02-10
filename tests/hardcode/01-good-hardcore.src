@@ -1,0 +1,67 @@
+.IPPcode23
+DEFVAR GF@a
+READ GF@a int
+DEFVAR GF@b
+READ GF@b int
+DEFVAR GF@c
+ADD GF@c GF@a GF@b
+DEFVAR GF@__LOOP_1_cond
+GT GF@__LOOP_1_cond GF@c int@0
+LABEL __LOOP_1_start
+JUMPIFEQ __LOOP_1_end GF@__LOOP_1_cond bool@false
+DEFVAR GF@__COND_1_cond
+GT GF@__COND_1_cond GF@c int@5
+JUMPIFEQ __COND_1_body GF@__COND_1_cond bool@true
+JUMPIFEQ __COND_1_else GF@__COND_1_cond bool@false
+LABEL __COND_1_body
+ADD GF@c GF@c int@1
+JUMP __COND_1_end
+LABEL __COND_1_else
+SUB GF@c GF@c int@1
+JUMP __COND_1_end
+LABEL __COND_1_end
+GT GF@__LOOP_1_cond GF@c int@0
+JUMP __LOOP_1_start
+LABEL __LOOP_1_end
+WRITE GF@c
+DEFVAR GF@__COND_2_cond
+JUMPIFEQ __COND_2_end GF@__COND_2_cond bool@false
+LABEL __COND_2_body
+DEFVAR GF@d
+READ GF@d string
+DEFVAR GF@e
+READ GF@e int
+DEFVAR GF@d_l
+STRLEN GF@d_l GF@d
+DEFVAR GF@f
+ADD GF@f GF@d_l GF@e
+WRITE GF@f
+DEFVAR GF@__COND_3_cond
+JUMPIFEQ __COND_3_end GF@__COND_3_cond bool@false
+LABEL __COND_3_body
+DEFVAR GF@g
+PUSHS GF@d
+CALL ord
+POPS GF@g
+WRITE GF@g
+JUMP __COND_3_end
+LABEL __COND_3_end
+JUMP __COND_2_end
+LABEL __COND_2_end
+EXIT int@0
+LABEL ord
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@string
+DEFVAR LF@string_length
+DEFVAR LF@result
+POPS LF@string
+STRLEN LF@string_length LF@string
+MOVE LF@result int@0
+PUSHS LF@string_length
+PUSHS int@0
+STRI2INT LF@result LF@string int@0
+LABEL ord_if_end
+PUSHS LF@result
+POPFRAME
+RETURN
