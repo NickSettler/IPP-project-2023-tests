@@ -27,7 +27,7 @@ class Test:
         self.name = src.replace(".src", "").split('/')[-1]
 
         self.src_file = src
-        self.out_file = src.replace(".src", ".out")
+        self.out_file = src.replace(".src", ".xml")
         self.rc_file = src.replace(".src", ".code")
 
         self.actual_rc = ""
@@ -123,4 +123,12 @@ def main():
 
 
 if __name__ == '__main__':
+    print("""<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode23">
+ <instruction order="1" opcode="MOVE">
+  <arg1 type="var">GF@a</arg1>
+  <arg2 type="int">-1</arg2>
+ </instruction>
+</program>""".replace(" ", ""))
+
     main()

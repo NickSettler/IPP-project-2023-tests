@@ -21,7 +21,7 @@ def main():
     with open(f"{name}.src", "w") as file:
         file.write("")
 
-    with open(f"{name}.out", "w") as file:
+    with open(f"{name}.xml", "w") as file:
         file.write("")
 
     with open(f"{name}.code", "w") as file:
